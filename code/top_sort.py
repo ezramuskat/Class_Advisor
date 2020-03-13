@@ -6,11 +6,17 @@ client = pymongo.MongoClient('hostname', 27017)
 
 db = client['database_name']
 
+collection = db['collection_name']
+
 def top_sort():
     pass
 
-def load_class():
+def load_classes(prerec: Class_Node):
     """
-    Loads the given class table from the databse into a Class_Node object and returns it
+    Loads the given class table from the database into a Class_Node object and returns it
     """
-    pass
+    query = {"prerec": prerec.number}
+
+    classes = collection.find(query)
+
+    return classes
